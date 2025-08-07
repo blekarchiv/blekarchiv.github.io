@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bingen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PEOPLE
+  </header>
+
+  <main class="gallery">
+    <img src="./bilder/pp1.JPG" alt="People 1">
+    <img src="./bilder/pp2.JPG" alt="People 2">
+    <img src="./bilder/pp3.JPG" alt="People 3">
+    <img src="./bilder/pp4.JPG" alt="People 4">
+    <img src="./bilder/pp5.JPG" alt="People 5">
+    <img src="./bilder/pp6.JPG" alt="People 6">
+    <img src="./bilder/pp7.JPG" alt="People 7">
+    <img src="./bilder/pp8.JPG" alt="People 8">
+    <img src="./bilder/pp9.JPG" alt="People 9">
+    <img src="./bilder/pp10.JPG" alt="People 10">
+    <img src="./bilder/pp11.JPG" alt="People 11">
+    <img src="./bilder/pp12.JPG" alt="People 12">
+    <!-- Weitere Bilder -->
+  </main>
+
+  <!-- Overlay für große Bildanzeige -->
+  <div id="overlay" class="overlay" onclick="closeOverlay()">
+    <img id="overlay-img" src="" alt="">
+    <a id="download-btn" href="" download>Bild herunterladen</a>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("overlay");
+    const overlayImg = document.getElementById("overlay-img");
+    const downloadBtn = document.getElementById("download-btn");
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation(); // verhindert, dass das overlay sofort wieder schließt
+        overlay.style.display = 'flex';
+        overlayImg.src = img.src;
+        downloadBtn.href = img.src;
+      });
+    });
+
+    function closeOverlay() {
+      overlay.style.display = 'none';
+      overlayImg.src = "";
+    }
+  </script>
+</body>
+</html>
